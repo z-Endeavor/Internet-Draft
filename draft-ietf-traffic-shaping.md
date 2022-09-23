@@ -23,7 +23,7 @@ title: "TODO - Your title"
 abbrev: "TODO - Abbreviation"
 category: info
 
-docname: draft-ietf-traffic-shaping-00
+docname: draft-ietf-traffic-shaping
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
