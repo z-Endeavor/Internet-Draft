@@ -1,6 +1,6 @@
 ---
 title: "Carrying Traffic Shaping Mechanism in IPv6 Extension Header"
-abbrev: "Carrying Traffic Shaping Mechanism in IPv6 Extension Header"
+abbrev: "IPv6 Carries Traffic Shaping Mechanism"
 category: info
 
 docname: draft-ietf-traffic-shaping-latest
@@ -58,13 +58,13 @@ This document gives a description of the design of the IPv6 bearer traffic shapi
 
 Carrying traffic shaping mechanism in IPv6 extension header is in the form of a field on the extended header that specifies the basic traffic scheduling shaping protocol interface options for resolving the semantics of the scheduling shaping mechanism in the packet, allowing the network determinism to be transmitted through the extended header as well as for the adaptation of the upper layer protocols and network functions for use. This field information can be examined and processed by each node of the packet transmission path.
 
-The requirements for the use of scheduling shaping include two main aspects: the scheduling shaping technical solution options and the key information necessary for this solution. The protocol format consists of four fields: options, flag bits, fill bit length, and control information. The definition format is shown in Figure x. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
+The requirements for the use of scheduling shaping include the scheduling shaping technical solution options and the control information necessary of specific solution. The definition format consists of four fields, including options, flag bits, fill bit length, and control information. The definition format is shown in **Figure x**. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
 
 ~~~~~
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
                                                    +-+-+-+-+-+-+-+-+
-                                                   |  OPT  |F|  FB |
+                                                   |  OPT  |F| FBL |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                                                               |
    ~             Control Information (variable length)             ~
@@ -76,7 +76,7 @@ where
 
 *  Options(OPT): 4-bits. Indicating the synchronous traffic scheduling shaping technology scheme used.
 *  Flag: 1-bit. Used to record whether the contents of this protocol have reached their maximum length.
-*  Fill Bit length(FB): 3-bit. The number of bits used to record the padding at the end of the protocol is 0 to 7 bits to ensure that the total length of the definition content is an integer multiple of 8 bits, which is compatible with the subsequent adaptation in the IPv6 extension header. The actual length of the control information is obtained by parsing the length of the padding bits to facilitate the reading and processing of the network control device. The padding method is to set all the padding bits at the end to 0. 
+*  Fill Bit Length(FBL): 3-bit. The number of bits used to record the padding at the end of the protocol is 0 to 7 bits to ensure that the total length of the definition content is an integer multiple of 8 bits, which is compatible with the subsequent adaptation in the IPv6 extension header. The actual length of the control information is obtained by parsing the length of the padding bits to facilitate the reading and processing of the network control device. The padding method is to set all the padding bits at the end to 0. 
 *  Control Information: Variable length. Used to carry the network control information necessary for the use of a specific scheduling and shaping mechanism, in a format and content determined by the specific scheduling and shaping mechanism. The standard control frame format of each specific scheduling shaping mechanism is used to ensure the integrity of the control information to complete the standard adaptation to various network devices.
 
 
@@ -101,7 +101,9 @@ where
 In the definition above, some specific instructions are required:
 
 The Option Type identifiers are internally encoded such that their highest-order 2 bits specify the action that must be taken if the processing IPv6 node does not recognize the Option Type. Actions are selected by the controller in the network, refer to IETF RFC8200 for specific action definitions.
+
 The third-highest-order bit of the Option Type specifies whether or not the Option Data of that option can change en route to the packet’s final destination. The option data is changed during packet forwarding with traffice shaping information so that this bit needs to be set to 1.
+
 The low-order 5 bits of the Option Type should not conflict with the Option Type field already defined by IPv6.
 
 Option Data is used to carry the definition content of Chapter 3.
