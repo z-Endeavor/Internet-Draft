@@ -58,7 +58,7 @@ This document gives a description of the design of the IPv6 bearer traffic shapi
 
 Carrying traffic shaping mechanism in IPv6 extension header is in the form of a field on the extended header that specifies the basic traffic scheduling shaping protocol interface options for resolving the semantics of the scheduling shaping mechanism in the packet, allowing the network determinism to be transmitted through the extended header as well as for the adaptation of the upper layer protocols and network functions for use. This field information can be examined and processed by each node of the packet transmission path.
 
-The requirements for the use of scheduling shaping include two main aspects: the scheduling shaping technical solution options and the key information necessary for this solution. The protocol format consists of four fields: options, flag bits, fill bit length, and control information. The protocol format is shown in **Figure x**. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
+The requirements for the use of scheduling shaping include two main aspects: the scheduling shaping technical solution options and the key information necessary for this solution. The protocol format consists of four fields: options, flag bits, fill bit length, and control information. The definition format is shown in Figure x. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
 
 ~~~~~
     0                   1                   2                   3
@@ -109,7 +109,7 @@ Option Data is used to carry the definition content of Chapter 3.
 
 # Security Considerations
 
-Security Considerations are composed of a number of different pieces. These can be used to provide confidentiality, integrity, and replay protection; though some of these can be configured manually, generally a key management component is used.  
+Security Considerations are composed of a number of different pieces. These can be used to provide confidentiality, integrity, and replay protection.
 
 ## Confidentiality
 
