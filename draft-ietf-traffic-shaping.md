@@ -58,10 +58,7 @@ This document gives a description of the design of the IPv6 bearer traffic shapi
 
 Carrying traffic shaping mechanism in IPv6 extension header is in the form of a field on the extended header that specifies the basic traffic scheduling shaping protocol interface options for resolving the semantics of the scheduling shaping mechanism in the packet, allowing the network determinism to be transmitted through the extended header as well as for the adaptation of the upper layer protocols and network functions for use. This field information can be examined and processed by each node of the packet transmission path.
 
-The requirements for the use of scheduling shaping include the scheduling shaping technical solution options and the control information necessary of specific solution. 
-The definition format consists of four fields, including options, flag bits, fill bit length, and control information. 
-The definition format is shown in **Figure x**. 
-The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
+The requirements for the use of scheduling shaping include the scheduling shaping technical solution options and the control information necessary of specific solution. The definition format consists of four fields, including options, flag bits, fill bit length, and control information. The definition format is shown in **Figure x**. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design.
 
 
 ~~~~~
@@ -80,7 +77,7 @@ where
 
 *  Options(OPT): 4-bits. Indicating the synchronous traffic scheduling shaping technology scheme used.
 *  Flag: 1-bit. Used to record whether the contents of this protocol have reached their maximum length.
-*  Fill Bit Length(FBL): 3-bit. The number of bits used to record the padding at the end of the protocol is 0 to 7 bits to ensure that the total length of the definition content is an integer multiple of 8 bits, which is compatible with the subsequent adaptation in the IPv6 extension header. The actual length of the control information is obtained by parsing the length of the padding bits to facilitate the reading and processing of the network control device. The padding method is to set all the padding bits at the end to 0. 
+*  Fill Bit Length(FBL): 3-bit. The number of bits used to record the padding at the end of the protocol is 0 to 7 bits to ensure that the total length of the definition content is an integer multiple of 8 bits, which is compatible with the subsequent adaptation in the IPv6 extension header. The actual length of the control information is obtained by parsing the length of the padding bits to facilitate the reading and processing of the network control device. The padding method is to set all the padding bits at the end to 0.
 *  Control Information: Variable length. Used to carry the network control information necessary for the use of a specific scheduling and shaping mechanism, in a format and content determined by the specific scheduling and shaping mechanism. The standard control frame format of each specific scheduling shaping mechanism is used to ensure the integrity of the control information to complete the standard adaptation to various network devices.
 
 
