@@ -58,7 +58,7 @@ This document gives a description of the design of the IPv6 bearer traffic shapi
 
 Carrying traffic shaping mechanism in IPv6 extension header is in the form of a field on the extended header that specifies the basic traffic scheduling shaping protocol interface options for resolving the semantics of the scheduling shaping mechanism in the packet, allowing the network determinism to be transmitted through the extended header as well as for the adaptation of the upper layer protocols and network functions for use. This field information can be examined and processed by each node of the packet transmission path.
 
-The requirements for the use of scheduling shaping include the scheduling shaping technical solution options and the control information necessary of specific solution. The definition format consists of four fields, including options, flag bits, fill bit length, and control information. The definition format is shown in **Figure x**. The technical scheme here mainly specifies the synchronous scheduling and shaping mechanism option, and the asynchronous scheduling and shaping mechanism information is not transmitted through this design. 
+
 
 ~~~~~
     0                   1                   2                   3
