@@ -1,6 +1,6 @@
 ---
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Carrying Traffic Shaping Mechanism in IPv6 Extension Header"
+abbrev: "Carrying Traffic Shaping Mechanism in IPv6 Extension Header"
 category: info
 
 docname: draft-ietf-traffic-shaping-latest
