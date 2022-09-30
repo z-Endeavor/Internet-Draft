@@ -76,7 +76,7 @@ The requirements for the use of scheduling shaping include the scheduling shapin
    ~             Control Information (variable length)             ~
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   Figure 1: Definition of Carrying Traffic Shaping Mechanism
+       Figure 1: Definition of Carrying Traffic Shaping Mechanism
 ~~~~~
 
 where
@@ -100,7 +100,7 @@ The Control Information contains standard control frame format of each specific 
 
 # Specification in Hop-by-Hop Options
 
-The definition of carrying traffic shaping mechanism shall conform to the relevant specifications in IETF RFC8200 for extended headers. The content in Section 3 should be placed in a Hop-by-Hop option header in the extended header to carry information that will not be inserted or removed and that can be examined or processed by each node in the packet transmission path until the packet reaches the node identified in the destination address field of the IPv6 header(or in the case of multicast, each of a group of nodes).
+The definition of carrying traffic shaping mechanism shall conform to the relevant specifications in [RFC8200] for extended headers. The content in Section 3 should be placed in a Hop-by-Hop option header in the extended header to carry information that will not be inserted or removed and that can be examined or processed by each node in the packet transmission path until the packet reaches the node identified in the destination address field of the IPv6 header(or in the case of multicast, each of a group of nodes).
 
 The definition populates one or more sub-options of the TLV encoding format into the option field of the hop-by-hop option header, where the TLV encoding format is shown in Figure 2.
 
@@ -108,7 +108,7 @@ The definition populates one or more sub-options of the TLV encoding format into
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- - - - - - - - -
 |  Option Type  |  Opt Data Len |  Option Data
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- - - - - - - - -
-Figure 2: TLV Encoding Format
+          Figure 2: TLV Encoding Format
 ~~~~~
 
 where
@@ -133,7 +133,7 @@ In addition, the length of the protocol defined in Section 3 exceeds the maximum
 
 # Security Considerations
 
-Security issues with IPv6 Hop-by-Hop options are well known and have been documented in several places, including RFC6398, RFC6192, and RFC9098. Security Considerations in IPv6 are composed of a number of different pieces. These are mainly required to provide the three characteristics of replay protection, integrity and confidentiality.
+Security issues with IPv6 Hop-by-Hop options are well known and have been documented in several places, including [RFC6398], [RFC6192], and [RFC9098]. Security Considerations in IPv6 are composed of a number of different pieces. These are mainly required to provide the three characteristics of replay protection, integrity and confidentiality.
 
 ## Replay Protection
 
