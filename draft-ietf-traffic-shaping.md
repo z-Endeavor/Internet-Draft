@@ -32,7 +32,6 @@ author:
 normative:
   RFC2119:
   RFC8174:
-  RFC8200:
 
 informative:
   RFC5409:
@@ -110,7 +109,7 @@ The Control Information contains standard control frame format of each specific 
 
 # Specification in Hop-by-Hop Options
 
-The definition of carrying traffic shaping mechanism shall conform to the relevant specifications in [RFC8200] for extended headers. The content in Section 3 should be placed in a Hop-by-Hop option header in the extended header to carry information that will not be inserted or removed and that can be examined or processed by each node in the packet transmission path until the packet reaches the node identified in the destination address field of the IPv6 header(or in the case of multicast, each of a group of nodes).
+The definition of carrying traffic shaping mechanism shall conform to the relevant specifications in {{!RFC8200}} for extended headers. The content in Section 3 should be placed in a Hop-by-Hop option header in the extended header to carry information that will not be inserted or removed and that can be examined or processed by each node in the packet transmission path until the packet reaches the node identified in the destination address field of the IPv6 header(or in the case of multicast, each of a group of nodes).
 
 The definition populates one or more sub-options of the TLV encoding format into the option field of the hop-by-hop option header, where the TLV encoding format is shown in Figure 2.
 
@@ -130,7 +129,7 @@ where
 
 In the definition above, some specific instructions are required:
 
-The Option Type identifiers are internally encoded such that their highest-order 2 bits specify the action that must be taken if the processing IPv6 node does not recognize the Option Type. Actions are selected by the controller in the network, refer to IETF RFC8200 for specific action definitions.
+The Option Type identifiers are internally encoded such that their highest-order 2 bits specify the action that must be taken if the processing IPv6 node does not recognize the Option Type. Actions are selected by the controller in the network, refer to {{!RFC8200}} for specific action definitions.
 
 The third-highest-order bit of the Option Type specifies whether or not the Option Data of that option can change en route to the packet’s final destination. The option data is changed during packet forwarding with traffice shaping information so that this bit needs to be set to 1.
 
