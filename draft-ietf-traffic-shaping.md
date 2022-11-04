@@ -32,7 +32,7 @@ author:
 normative:
   RFC2119:
   RFC8174:
-  HbH-UPDT：
+  HbH-UPDT:
   RFC8200:
 
 informative:
