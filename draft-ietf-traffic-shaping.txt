@@ -346,6 +346,12 @@ Table of Contents
 
 7.1.  Normative References
 
+   [HbH-UPDT] Hinden, R. M. and G. Fairhurst, "IPv6 Hop-by-Hop Options
+              Processing Procedures", Work in Progress, Internet-Draft,
+              draft-hinden-6man-hbh-processing-01, 2 June 2021,
+              <https://datatracker.ietf.org/doc/html/draft-hinden-6man-
+              hbh-processing-01>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
