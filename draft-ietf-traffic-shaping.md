@@ -32,6 +32,7 @@ author:
 normative:
   RFC2119:
   RFC8174:
+  HbH-UPDT：
   RFC8200:
 
 informative:
@@ -48,6 +49,16 @@ Starting from the traffic shaping mechanism, one of the core technologies of net
 --- middle
 
 # Introduction
+
+Time Sensitive Network (TSN) is a network that guarantees the quality of service for delay-sensitive flows, achieving low latency, low jitter and zero packet loss. Time-sensitive streams can be divided into periodic time-sensitive streams (PTS), such as cyclic control instructions in the plant, synchronization information, and non-periodic/sporadic time-sensitive streams (STS), such as event alarm information.
+
+For periodic time-sensitive flows, synchronous scheduling shaping mechanisms are generally used, i.e., requiring precise nanosecond clock synchronization of network-wide devices, whose earliest ideas come from Time-Triggered Ethernet (TTE), and current mechanisms studied include Time-Aware Shaping (TAS), Cyclic Queuing and Forwarding (CQF), Credit-Based Shaping (CBS).
+
+Scheduling and shaping mechanisms are two quality of service assurance mechanisms in the switch. Scheduling refers to queue scheduling, which is generally implemented at the outgoing port of the switch and consists of three parts: entering the queue, selecting the sending queue according to the scheduling algorithm, and exiting the transmission; shaping refers to traffic shaping, which prevents congestion within the switch or at the next hop by limiting the forwarding rate of the port.
+
+Since the asynchronous scheduling and shaping mechanism cannot guarantee that the worst delay of the packet meets a certain threshold, it can only guarantee that the average delay of the packet is comparable to the synchronous method, and the delay jitter is relatively large, and the delay-sensitive stream is prone to packet loss in the case of network congestion, the current asynchronous mechanism is not mature, and in order to better elucidate the nature of the delay-sensitive network, this document of using the synchronous mechanism to transmit periodic delay-sensitive stream (PTS) is mainly discussed.
+
+"IPv6 Hop-by-Hop Options Processing Procedures" [HbH-UPDT] further specifies the procedures for how IPv6 Hop-by-Hop options are processed to make their processing even more practical and increase their use in the Internet. In that context, it makes sense to consider Hop-by-Hop Options to transport the information that is relevant to carry traffic shaping mechanism.
 
 Starting from the traffic shaping mechanism, one of the core technologies of network deterministic assurance, we summarize the characteristics of different traffic scheduling and shaping methods and propose a solution design for IPv6 to carry these traffic scheduling and shaping methods, taking into account deterministic and security factors. At the same time, the network scope of practical applications is becoming larger and larger, and the demand for deterministic network services will no longer be restricted to LANs, but will require deterministic forwarding beyond LAN boundaries, extending the deterministic assurance capability previously provided in LANs to WANs through network layer technologies.
 
