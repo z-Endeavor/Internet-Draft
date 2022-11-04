@@ -257,7 +257,7 @@ Table of Contents
    The Option Type identifiers are internally encoded such that their
    highest-order 2 bits specify the action that must be taken if the
    processing IPv6 node does not recognize the Option Type.  Actions are
-   selected by the controller in the network, refer to IETF RFC8200 for
+   selected by the controller in the network, refer to [RFC8200] for
    specific action definitions.
 
    The third-highest-order bit of the Option Type specifies whether or
