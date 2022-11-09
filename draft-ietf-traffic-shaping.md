@@ -50,7 +50,7 @@ Starting from the traffic shaping mechanism, one of the core technologies of net
 
 Time Sensitive Network (TSN) is a network that guarantees the quality of service for delay-sensitive flows, achieving low latency, low jitter and zero packet loss. Time-sensitive streams can be divided into periodic time-sensitive streams (PTS), such as cyclic control instructions in the plant, synchronization information, and non-periodic/sporadic time-sensitive streams (STS), such as event alarm information.
 
-For periodic time-sensitive flows, synchronous scheduling shaping mechanisms are generally used, i.e., requiring precise nanosecond clock synchronization of network-wide devices, whose earliest ideas come from Time-Triggered Ethernet (TTE), and current mechanisms studied include Time-Aware Shaping (TAS), Cyclic Queuing and Forwarding (CQF), Credit-Based Shaping (CBS).
+For periodic time-sensitive flows, traffic synchronous scheduling shaping mechanisms are generally used, requiring precise nanosecond clock synchronization of network-wide devices. Current mechanisms studied include Time-Triggered Ethernet (TTE), Time-Aware Shaping (TAS), Cyclic Queuing and Forwarding (CQF) and Credit-Based Shaping (CBS).
 
 Scheduling and shaping mechanisms are two quality of service assurance mechanisms in the switch. Scheduling refers to queue scheduling, which is generally implemented at the outgoing port of the switch and consists of three parts: entering the queue, selecting the sending queue according to the scheduling algorithm, and exiting the transmission; shaping refers to traffic shaping, which prevents congestion within the switch or at the next hop by limiting the forwarding rate of the port.
 
@@ -109,6 +109,10 @@ The Control Information contains standard control frame format of each specific 
 
 # Specification in Hop-by-Hop Options
 
+
+
+## Format in Hop-by-Hop Option
+
 The definition of carrying traffic shaping mechanism shall conform to the relevant specifications in {{!RFC8200}} for extended headers. The content in Section 3 should be placed in a Hop-by-Hop option header in the extended header to carry information that will not be inserted or removed and that can be examined or processed by each node in the packet transmission path until the packet reaches the node identified in the destination address field of the IPv6 header(or in the case of multicast, each of a group of nodes).
 
 The definition populates one or more sub-options of the TLV encoding format into the option field of the hop-by-hop option header, where the TLV encoding format is shown in Figure 2.
@@ -138,6 +142,10 @@ The low-order 5 bits of the Option Type should not conflict with the Option Type
 Option Data is used to carry the definition content of Section 3.
 
 In addition, the length of the protocol defined in Section 3 exceeds the maximum length of an option, the F identifiers should be set to 1 and the protocol will continue to be stored in the next option. The protocol content in Section 3 is split into at most two options.
+
+## Hop-by-Hop processing definition
+
+HBH Processing draft should define the HBH processing.
 
 
 # Security Considerations
