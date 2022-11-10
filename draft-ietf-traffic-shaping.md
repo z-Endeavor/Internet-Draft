@@ -54,18 +54,35 @@ For periodic time-sensitive flows, traffic synchronous scheduling shaping mechan
 
 Scheduling and shaping mechanisms are two quality of service assurance mechanisms in the switch. Scheduling refers to queue scheduling, which is generally implemented at the outgoing port of the switch and consists of three parts: entering the queue, selecting the sending queue according to the scheduling algorithm, and exiting the transmission; shaping refers to traffic shaping, which prevents congestion within the switch or at the next hop by limiting the forwarding rate of the port.
 
-Since the asynchronous scheduling and shaping mechanism cannot guarantee that the worst delay of the packet meets a certain threshold, it can only guarantee that the average delay of the packet is comparable to the synchronous method, and the delay jitter is relatively large, and the delay-sensitive stream is prone to packet loss in the case of network congestion, the current asynchronous mechanism is not mature, and in order to better elucidate the nature of the delay-sensitive network, this document of using the synchronous mechanism to transmit periodic delay-sensitive stream (PTS) is mainly discussed.
-
 "IPv6 Hop-by-Hop Options Processing Procedures" {{!HbH-UPDT=I-D.hinden-6man-hbh-processing}} further specifies the procedures for how IPv6 Hop-by-Hop options are processed to make their processing even more practical and increase their use in the Internet. In that context, it makes sense to consider Hop-by-Hop Options to transport the information that is relevant to carry traffic shaping mechanism.
 
-Starting from the traffic shaping mechanism, one of the core technologies of network deterministic assurance, we summarize the characteristics of different traffic scheduling and shaping methods and propose a solution design for IPv6 to carry these traffic scheduling and shaping methods, taking into account deterministic and security factors. At the same time, the network scope of practical applications is becoming larger and larger, and the demand for deterministic network services will no longer be restricted to LANs, but will require deterministic forwarding beyond LAN boundaries, extending the deterministic assurance capability previously provided in LANs to WANs through network layer technologies.
+Since the asynchronous scheduling and shaping mechanism cannot guarantee that the worst delay of the packet meets a certain threshold, it can only guarantee that the average delay of the packet is comparable to the synchronous method, and the delay jitter is relatively large, and the delay-sensitive stream is prone to packet loss in the case of network congestion, the current asynchronous mechanism is not mature, and in order to better elucidate the nature of the delay-sensitive network, this document of using the synchronous mechanism to transmit periodic time-sensitive stream (PTS) is mainly discussed.
 
-This document gives a description of the design of the IPv6 bearer traffic shaping mechanism and specifies the technical requirements and security specifications of the IPv6 bearer traffic shaping mechanism.This document applies to deterministic data communication of IPv6 networks that have implemented synchronous scheduling shaping mechanism.
+For the traffic shaping mechanism, one of the core technologies of network deterministic assurance, we summarize the characteristics of different traffic scheduling and shaping methods and propose a solution design for IPv6 to carry these traffic scheduling and shaping methods, taking into account deterministic and security factors. At the same time, the network scope of practical applications is becoming larger and larger, and the demand for deterministic network services will no longer be restricted to LANs, but will require deterministic forwarding beyond LAN boundaries, extending the deterministic assurance capability previously provided in LANs to WANs through network layer technologies.
+
+This document gives a description of the design of the IPv6 carrying traffic shaping mechanism and specifies the technical requirements and security specifications of the IPv6 carrying traffic shaping mechanism. This document applies to deterministic data communication of IPv6 networks that have implemented traffic synchronous scheduling shaping mechanism.
 
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
+
+
+# Network Communication System
+
+Based on the premise of deterministic requirements, this document only considers the design of synchronization schemes where the network uses synchronization mechanisms to transmit periodic time-sensitive stream (PTS), while requiring accurate nanosecond time synchronization of devices within the entire network communication scenario.
+
+## General Model of Network Transmission
+
+An applicable time-sensitive traffic shaping network communication model is given in Figure 1 and illustrates the network elements in it.
+
+## Network Node Description
+
+It is expected to be deployed in a variety of IPv6 devices and situations. Therefore the need to specify IPv6 node requirements will allow traffic shaping mechanisms to work well and interoperate over IPv6 in a large number of situations and deployments.
+
+## Network Communication Process
+
+Figure 2 gives the communication flow of the network system.
 
 
 # Definition of Carrying Traffic Shaping Mechanism
