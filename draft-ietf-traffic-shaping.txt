@@ -4,8 +4,8 @@
 
 Network Working Group                                         Y. N. Here
 Internet-Draft                                    Your Organization Here
-Intended status: Informational                           9 November 2022
-Expires: 13 May 2023
+Intended status: Informational                          10 November 2022
+Expires: 14 May 2023
 
 
       Carrying Traffic Shaping Mechanism in IPv6 Extension Header
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 May 2023.
+   This Internet-Draft will expire on 14 May 2023.
 
 Copyright Notice
 
@@ -72,18 +72,22 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Definition of Carrying Traffic Shaping Mechanism
-   4.  Specification in Hop-by-Hop Options
-     4.1.  Format in Hop-by-Hop Option
-     4.2.  Hop-by-Hop processing definition
-   5.  Security Considerations
-     5.1.  Replay Protection
-     5.2.  Integrity
-     5.3.  Confidentiality
-   6.  IANA Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   3.  Network Communication System
+     3.1.  General Model of Network Transmission
+     3.2.  Network Node Description
+     3.3.  Network Communication Process
+   4.  Definition of Carrying Traffic Shaping Mechanism
+   5.  Specification in Hop-by-Hop Options
+     5.1.  Format in Hop-by-Hop Option
+     5.2.  Hop-by-Hop processing definition
+   6.  Security Considerations
+     6.1.  Replay Protection
+     6.2.  Integrity
+     6.3.  Confidentiality
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Author's Address
 
@@ -113,6 +117,13 @@ Table of Contents
    congestion within the switch or at the next hop by limiting the
    forwarding rate of the port.
 
+   "IPv6 Hop-by-Hop Options Processing Procedures" [HbH-UPDT] further
+   specifies the procedures for how IPv6 Hop-by-Hop options are
+   processed to make their processing even more practical and increase
+   their use in the Internet.  In that context, it makes sense to
+   consider Hop-by-Hop Options to transport the information that is
+   relevant to carry traffic shaping mechanism.
+
    Since the asynchronous scheduling and shaping mechanism cannot
    guarantee that the worst delay of the packet meets a certain
    threshold, it can only guarantee that the average delay of the packet
@@ -121,34 +132,27 @@ Table of Contents
    loss in the case of network congestion, the current asynchronous
    mechanism is not mature, and in order to better elucidate the nature
    of the delay-sensitive network, this document of using the
-   synchronous mechanism to transmit periodic delay-sensitive stream
+   synchronous mechanism to transmit periodic time-sensitive stream
    (PTS) is mainly discussed.
 
-   "IPv6 Hop-by-Hop Options Processing Procedures" [HbH-UPDT] further
-   specifies the procedures for how IPv6 Hop-by-Hop options are
-   processed to make their processing even more practical and increase
-   their use in the Internet.  In that context, it makes sense to
-   consider Hop-by-Hop Options to transport the information that is
-   relevant to carry traffic shaping mechanism.
-
-   Starting from the traffic shaping mechanism, one of the core
-   technologies of network deterministic assurance, we summarize the
-   characteristics of different traffic scheduling and shaping methods
-   and propose a solution design for IPv6 to carry these traffic
-   scheduling and shaping methods, taking into account deterministic and
-   security factors.  At the same time, the network scope of practical
+   For the traffic shaping mechanism, one of the core technologies of
+   network deterministic assurance, we summarize the characteristics of
+   different traffic scheduling and shaping methods and propose a
+   solution design for IPv6 to carry these traffic scheduling and
+   shaping methods, taking into account deterministic and security
+   factors.  At the same time, the network scope of practical
    applications is becoming larger and larger, and the demand for
    deterministic network services will no longer be restricted to LANs,
    but will require deterministic forwarding beyond LAN boundaries,
    extending the deterministic assurance capability previously provided
    in LANs to WANs through network layer technologies.
 
-   This document gives a description of the design of the IPv6 bearer
+   This document gives a description of the design of the IPv6 carrying
    traffic shaping mechanism and specifies the technical requirements
-   and security specifications of the IPv6 bearer traffic shaping
-   mechanism.This document applies to deterministic data communication
-   of IPv6 networks that have implemented synchronous scheduling shaping
-   mechanism.
+   and security specifications of the IPv6 carrying traffic shaping
+   mechanism.  This document applies to deterministic data communication
+   of IPv6 networks that have implemented traffic synchronous scheduling
+   shaping mechanism.
 
 2.  Conventions and Definitions
 
@@ -158,7 +162,33 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Definition of Carrying Traffic Shaping Mechanism
+3.  Network Communication System
+
+   Based on the premise of deterministic requirements, this document
+   only considers the design of synchronization schemes where the
+   network uses synchronization mechanisms to transmit periodic time-
+   sensitive stream (PTS), while requiring accurate nanosecond time
+   synchronization of devices within the entire network communication
+   scenario.
+
+3.1.  General Model of Network Transmission
+
+   An applicable time-sensitive traffic shaping network communication
+   model is given in Figure 1 and illustrates the network elements in
+   it.
+
+3.2.  Network Node Description
+
+   It is expected to be deployed in a variety of IPv6 devices and
+   situations.  Therefore the need to specify IPv6 node requirements
+   will allow traffic shaping mechanisms to work well and interoperate
+   over IPv6 in a large number of situations and deployments.
+
+3.3.  Network Communication Process
+
+   Figure 2 gives the communication flow of the network system.
+
+4.  Definition of Carrying Traffic Shaping Mechanism
 
    Carrying traffic shaping mechanism in IPv6 extension header is in the
    form of a field on the extended header that specifies the basic
@@ -225,9 +255,9 @@ Table of Contents
    the integrity of the control information to complete the standard
    adaptation to various network devices.
 
-4.  Specification in Hop-by-Hop Options
+5.  Specification in Hop-by-Hop Options
 
-4.1.  Format in Hop-by-Hop Option
+5.1.  Format in Hop-by-Hop Option
 
    The definition of carrying traffic shaping mechanism shall conform to
    the relevant specifications in [RFC8200] for extended headers.  The
@@ -280,11 +310,11 @@ Table of Contents
    and the protocol will continue to be stored in the next option.  The
    protocol content in Section 3 is split into at most two options.
 
-4.2.  Hop-by-Hop processing definition
+5.2.  Hop-by-Hop processing definition
 
    HBH Processing draft should define the HBH processing.
 
-5.  Security Considerations
+6.  Security Considerations
 
    Security issues with IPv6 Hop-by-Hop options are well known and have
    been documented in several places, including [RFC6398], [RFC6192],
@@ -293,7 +323,7 @@ Table of Contents
    three characteristics of replay protection, integrity and
    confidentiality.
 
-5.1.  Replay Protection
+6.1.  Replay Protection
 
    Replay Protection requires ensuring the uniqueness of each IP packet
    to ensure that the information cannot be reused in the event that it
@@ -316,7 +346,7 @@ Table of Contents
    *  The cache data should be cleared and guaranteed to be
       unrecoverable.
 
-5.2.  Integrity
+6.2.  Integrity
 
    Integrity of data is to prevent data from being tampered with during
    transmission and to ensure that the outgoing and incoming data are
@@ -331,7 +361,7 @@ Table of Contents
    *  Should have the ability to test the integrity of the data and
       provide the corresponding recovery control measures.
 
-5.3.  Confidentiality
+6.3.  Confidentiality
 
    Confidentiality is used to prevent attackers from accessing packet
    headers or content, ensuring that information cannot be read during
@@ -346,13 +376,13 @@ Table of Contents
       packet; if the packet is tampered with and the checksum does not
       match, the packet is discarded.
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    This document has no IANA actions.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [HbH-UPDT] Hinden, R. M. and G. Fairhurst, "IPv6 Hop-by-Hop Options
               Processing Procedures", Work in Progress, Internet-Draft,
@@ -374,7 +404,7 @@ Table of Contents
               DOI 10.17487/RFC8200, July 2017,
               <https://www.rfc-editor.org/rfc/rfc8200>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [RFC5409]  Martin, L. and M. Schertler, "Using the Boneh-Franklin and
               Boneh-Boyen Identity-Based Encryption Algorithms with the
