@@ -68,9 +68,19 @@ This document gives a description of the design of the IPv6 carrying traffic sha
 {::boilerplate bcp14-tagged}
 
 
+# Abbreviations in This Document
+
+TSN    Time Sensitive Network
+PTS    Periodic Time-sensitive Streams
+TTE    Time-Triggered Ethernet
+TAS    Time-Aware Shaping
+CQF    Cyclic Queuing and Forwarding
+CBS    Credit-Based Shaping
+
+
 # Network Communication System
 
-Based on the premise of deterministic requirements, this document only considers the design of synchronization schemes where the network uses synchronization mechanisms to transmit periodic time-sensitive stream (PTS), while requiring accurate nanosecond time synchronization of devices within the entire network communication scenario.
+Based on the premise of deterministic requirements, this document only considers the design of synchronization schemes where the network uses synchronization mechanisms to transmit PTS, while requiring accurate nanosecond time synchronization of devices within the entire network communication scenario.
 
 ## General Model of Network Transmission
 
@@ -78,7 +88,7 @@ An applicable time-sensitive traffic shaping network communication model is give
 
 ## Network Node Description
 
-It is expected to be deployed in a variety of IPv6 devices and situations. Therefore the need to specify IPv6 node requirements will allow traffic shaping mechanisms to work well and interoperate over IPv6 in a large number of situations and deployments.
+It is expected to be deployed in a variety of IPv6 devices and situations. Therefore, It is important to specify IPv6 node requirements will allow traffic shaping mechanisms to work well and interoperate over IPv6 in a large number of situations and deployments.
 
 ## Network Communication Process
 
