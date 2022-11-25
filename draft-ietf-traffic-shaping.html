@@ -16,7 +16,7 @@
 <meta content="draft-ietf-traffic-shaping-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.15.2
-    Python 3.10.5
+    Python 3.10.8
     appdirs 1.4.4
     ConfigArgParse 1.5.3
     google-i18n-address 2.5.2
@@ -1041,7 +1041,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Here</td>
-<td class="center">Expires 15 May 2023</td>
+<td class="center">Expires 29 May 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1054,12 +1054,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-traffic-shaping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-11-11" class="published">11 November 2022</time>
+<time datetime="2022-11-25" class="published">25 November 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-05-15">15 May 2023</time></dd>
+<dd class="expires"><time datetime="2023-05-29">29 May 2023</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1104,7 +1104,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 May 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 May 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1274,6 +1274,14 @@ CBS    Credit-Based Shaping<a href="#section-3-1" class="pilcrow">¶</a></p>
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-network-communication-proce" class="section-name selfRef">Network Communication Process</a>
         </h3>
 <p id="section-4.3-1">Figure 2 gives the communication flow of the network system.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.3-2.1">Collect the corresponding network topology information, traffic period, traffic size, end-to-end delay jitter requirement information and corresponding security requirements from various deterministic services, complete the centralized user configuration, and send it down to the network controller through the network user interface (UNI).<a href="#section-4.3-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.3-2.2">The network controller receives the network deterministic and security requirements and calculates the route scheduling control information for the traffic according to the corresponding algorithm. If the calculation is successful, the gating list is automatically synthesized and sent down through the southbound interface, and then the packet start time is returned to the sender; if the calculation fails, the orchestrator is told that the sender flow is not available for scheduling.<a href="#section-4.3-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.3-2.3">Centralized collaborative scheduling of switches to achieve traffic scheduling shaping and complete deterministic transmission by planning routes or dividing time slots, etc.<a href="#section-4.3-2.3" class="pilcrow">¶</a>
+</li>
+        </ul>
 </section>
 </div>
 </section>
