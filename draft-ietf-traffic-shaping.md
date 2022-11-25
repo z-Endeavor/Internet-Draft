@@ -94,6 +94,10 @@ It is expected to be deployed in a variety of IPv6 devices and situations. There
 
 Figure 2 gives the communication flow of the network system.
 
+*  Collect the corresponding network topology information, traffic period, traffic size, end-to-end delay jitter requirement information and corresponding security requirements from various deterministic services, complete the centralized user configuration, and send it down to the network controller through the network user interface (UNI).
+*  The network controller receives the network deterministic and security requirements and calculates the route scheduling control information for the traffic according to the corresponding algorithm. If the calculation is successful, the gating list is automatically synthesized and sent down through the southbound interface, and then the packet start time is returned to the sender; if the calculation fails, the orchestrator is told that the sender flow is not available for scheduling.
+*  Centralized collaborative scheduling of switches to achieve traffic scheduling shaping and complete deterministic transmission by planning routes or dividing time slots, etc.
+
 
 # Definition of Carrying Traffic Shaping Mechanism
 
